@@ -1,0 +1,30 @@
+pipeline {
+    agent any
+     tools {
+         maven "maven" 
+         dockerTool 'docker'
+         
+    }
+    stages {
+        stage ('git clone') {
+            steps {
+                git 'https://github.com/anitha8242/hello-world.git'
+            }
+        }
+        stage ('build') {
+            steps {
+                sh 'mvn  clean package'
+            }
+        } 
+        stage ('Docker Version') {
+            steps {
+                 sh 'docker version'
+            }
+        }
+        stage ('build docker image') {
+            steps {
+                sh 'docker run -dt --name docker -p 7070:8080 hello-world'
+            }
+        }
+    }
+}
