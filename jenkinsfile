@@ -22,7 +22,7 @@ pipeline {
         }
         stage ('build docker image') {
             steps {
-                sh 'docker run -dt --name docker1 -p 7070:8080 hello-world'
+                sh 'docker run -dt --name docker2 -p 7070:8080 hello-world'
             }
         }
     }
