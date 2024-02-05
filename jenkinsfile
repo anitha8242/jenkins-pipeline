@@ -2,9 +2,7 @@
 pipeline {
     agent any
      tools {
-         maven "maven" 
-         dockerTool 'docker'
-         
+         maven "maven"
     }
     stages {
         stage ('git clone') {
